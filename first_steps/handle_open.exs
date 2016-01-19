@@ -1,7 +1,8 @@
 handle_open = fn
   {:ok, file}  -> "First line: #{IO.read(file, :line)}"
-  {_,   error} -> "ERror: #{:file.format_error(error)}"
+  {_,   error} -> "Error: #{:file.format_error(error)}"
 end
-IO.puts handle_open.(File.open("/etc/passwd"))
+
+IO.puts handle_open.(File.open("/etc/gettytab"))
 IO.puts handle_open.(File.open("nonexistent"))
 
