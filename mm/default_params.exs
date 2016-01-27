@@ -1,10 +1,15 @@
-defmodule DefaultParams do
-  def func(p1, p2 \\2, p3 \\3, p4) do
-    IO.inspect [p1, p2, p3, p4]
+defmodule Params do
+  def func(p1, p2 \\ 123)
+
+  def func(p1, p2) when is_list(p1) do
+    "You said #{p2} with a list"
+  end
+
+  def func(p1, p2) do
+    "You passed in #{p1} #{p2}"
   end
 end
 
-DefaultParams.func("a", "b")
-DefaultParams.func("a", "b", "c")
-DefaultParams.func("a", "b", "c", "d")
-
+IO.puts Params.func(99)
+IO.puts Params.func(99, "cat")
+IO.puts Params.func([99], "dog")
